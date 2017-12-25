@@ -25666,3 +25666,9 @@
 [0mGET /fonts/fontawesome-webfont.woff2?v=4.7.0 [36m304 [0m4.770 ms - -[0m
 [0mGET /images/625717-20170209175338994-730909332.jpg [36m304 [0m7.580 ms - -[0m
 [0mGET /images/favicon.ico [32m200 [0m2.732 ms - 1150[0m
+[0mGET / [31m500 [0m31.484 ms - 1006[0m
+[0mGET /favicon.ico [36m304 [0m7.213 ms - -[0m
+[0mGET / [31m500 [0m16.124 ms - 1006[0m
+[0mGET /favicon.ico [36m304 [0m2.198 ms - -[0m
+[0mGET / [31m500 [0m15.608 ms - 1025[0m
+[0mGET /favicon.ico [32m200 [0m4.435 ms - 216[0m
