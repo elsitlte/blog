@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Blog</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+	<link rel="stylesheet" href="/stylesheets/font-awesome.min.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script type="text/javascript">
+  </script>
+</head>
+<body>
+  <nav>
+    <div class="navWrap">
+      <span class="span-logo left">   
+        <a title="logo" href="/"><img src="/images/Element_Design_logo.png"></a>
+      </span>      
+      <span class="hidden-xs left">   
+        <a title="主页" href="/"><i class="fa fa-home fa-1x" aria-hidden="true">|</i>主页</a>
+      </span>
+      <span class="hidden-xs left">
+        <a title="存档" href="/archive">
+          <i class="fa fa-file-archive-o fa-1x" aria-hidden="true">|</i>博文归档
+        </a>
+      </span>
+      <% if (user) { %>
+      <!--
+      <span class="span-upload"><a title="上传" href="/upload">upload</a></span>-->
+      <span class="hidden-xs left"> 
+        <a title="发表" href="/post">
+          <i class="fa fa-pencil-square-o fa-1x" aria-hidden="true">|</i>写博客
+        </a>
+      </span>     
+      <span class="hidden-xs right">
+        <a title="登出" href="/logout"><i class="fa fa-sign-out fa-1x" aria-hidden="true">|</i>退出
+        </a>
+      </span>
+      <div class="dropDownWrapper right">
+        <span class="span-head">
+          <a  id="dropDownAnchor" href="/u/<%= user.name %>/">
+            <img title="<%= user.name %>" src="/images/29777498.png" alt="<%= user.name %>" width="24" height="24" title="头像">
+            <i class="fa fa-caret-down fa-1x"></i>
+          </a>
+        </span>
+        <ul id="dropDown" class="dropDown">
+          <li>
+            <a title="<%= user.name %>" href="/u/<%= user.name %>/">
+              <i class="fa fa-feed fa-1x" aria-hidden="true"></i>我的博客
+            </a>
+          </li>
+          <li>
+            <a title="发表" href="/post">
+              <i class="fa fa-pencil-square-o fa-1x" aria-hidden="true"></i>写博客
+            </a>
+          </li>          
+          <li>
+            <a title="登出" href="/logout">
+              <i class="fa fa-sign-out fa-1x" aria-hidden="true"></i>退出
+            </a>        
+          </li>
+          <li>
+            <a title="设置" href="">
+              <i class="fa fa-cog fa-1x" aria-hidden="true"></i>设置
+            </a>        
+          </li>
+        </ul>
+      </div>
+      <em class="right">welcome <%= user.name %></em> 
+      <% } else { %>
+      <span class="span-login right"> 
+        <a title="登录" href="/login"><i class="fa fa-sign-in" aria-hidden="true">|</i>登录</a>
+      </span>
+      <span class="span-reg right">
+        <a title="注册" href="/reg"><i class="fa fa-registered" aria-hidden="true">|</i>注册</a>
+      </span>
+      <% } %>
+      <form action="/search" method="GET" class="search left">
+        <input id="search" type="text" name="keyword" placeholder="Search" /><!--
+     --><a id="search-anchor" href="#"><i class="fa fa-search search-icon"></i></a>
+        <i class="fa fa-search fa-1x search-iconm"></i>
+      </form> 
+    </div>
+  </nav>
+  <article>
+    <div class="main-container">
+
+
+

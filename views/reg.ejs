@@ -1,0 +1,99 @@
+<%- include header %>
+<form id="reg" method="post">
+<label for="tx1">用户名：</label>
+<input id="tx1" type="text" name="name"/><i class="" aria-hidden="true" ></i><span>至少5个字符</span>
+<br />
+<label for="tx2">密码：</label>
+<input id="tx2" type="password" name="password"/><i class="" aria-hidden="true" ></i><span>至少8个字符必须包含字母与数字</span>
+<br />
+<label for="tx3">确认密码：</label>
+<input id="tx3" type="password" name="password-repeat"/><i class="" aria-hidden="true" ></i><span></span>
+<br />
+<label for="tx4">邮箱： </label>
+<input id="tx4" type="email" name="email"/><i class="" aria-hidden="true"></i><span></span>
+<br />
+<input id="submit" type="submit" value="注册"/>
+</form>
+<%- include footer %>
+<script>
+function isWrong(ele,callback) {
+  if(ele.tagName.toLowerCase()!=="i") {
+    console.log(ele.tagName);
+    console.log("function isCorrent:arguments[0] must be <input>")
+  }
+  ele.className="fa fa-close";
+  ele.style.color="red";		      
+  ele.style.visibility="visiable";
+  checkResult="wrong";
+  if(callback&&typeof callback==="function"){
+    callback();
+  }
+  return "wrong";
+}
+function isCorrect(icons,spans) {
+  for(var i=0,length=icons.length;i<length;i++) {
+    icons[i].className="fa fa-check";
+    icons[i].style.color="#5cb85c";	
+    icons[i].style.visibility="visiable";
+    spans[i].innerHTML="正确";
+  }	
+}
+window.onload=function() {
+	var form=document.getElementById("reg");
+	var inputs=form.getElementsByTagName("input");
+  var icons=form.getElementsByTagName("i");
+  var spans=form.getElementsByTagName("span");
+	form.onsubmit=function(event) {
+	  var checkResult="right";
+	  isCorrect(icons,spans);//默认渲染正确
+	  for(var i=0,length=inputs.length-1;i<length;i++) {
+	    if(inputs[i].value==="") {
+        checkResult=isWrong(icons[i],function(){
+          spans[i].innerHTML="您还没有输入内容!";
+        });  
+	    }
+	  }	  
+	  if(inputs[0].value.length<5) {
+	    checkResult=isWrong(icons[0],function(){
+	      if(spans[0].innerHTML!=="您还没有输入内容!") {
+	        spans[0].innerHTML="用户名至少5个字符;";
+	      }
+	      
+	    });  
+	  }
+	  if(inputs[1].value.length<8) {
+	    checkResult=isWrong(icons[1],function(){
+        if(spans[1].innerHTML!=="您还没有输入内容!") {
+	       spans[1].innerHTML="密码至少8个字符;";
+	      }
+	    });  
+	  }
+	  if(inputs[1].value.search(/[0-9]/)===-1&&inputs[1].value.search(/[a-zA-Z]/)===-1) {
+	    checkResult=isWrong(icons[1],function(){
+        if(spans[1].innerHTML!=="您还没有输入内容!") {
+	        spans[1].innerHTML+="必须同时包含字母与数字;";
+	      }	    
+	    });  
+	  }
+	  if(inputs[2].value!==inputs[1].value) {
+	    checkResult=isWrong(icons[2],function(){
+        if(spans[2].innerHTML!=="您还没有输入内容!") {	    
+	        spans[2].innerHTML="前后密码输入不一致";
+	      }
+	    });  
+	  }
+	  if(inputs[3].value.search(/.+?@.+\..+?/)===-1){
+	    checkResult=isWrong(icons[3],function(){
+        if(spans[3].innerHTML!=="您还没有输入内容!") {	    
+	        spans[3].innerHTML="邮箱格式不正确！";
+	      }
+	    });  	  
+	  }
+	  if(checkResult==="wrong"){
+       event.preventDefault?event.preventDefault():event.returnValue=false; 
+	  }
+	}
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<%- include header %>
+<div id="editblog-body">
+	<div id="editblog-wrapinner">
+	  <div id="editblog-title">
+		  <input id="blog-title" type="text" name="title" form="blogform" placeholder="请在这里输入标题"/>
+    </div>
+		<div id="editblog-content" contenteditable="true"></div>
+	</div>
+	<div id="editblog-set">
+	  <div id="editblog-tag">
+      标签：<br><input type="text" name="tag1" form="blogform" />
+      <input type="text" name="tag2" form="blogform" />
+      <input type="text" name="tag3" form="blogform" />
+	</div>
+</div>
+<form id="blogform" method="post">
+  <textarea id="txa" name="post" rows="20" cols="120" form="blogform"></textarea>
+	<div class="btn-submit-wrapper">
+		<input id="blog-submit" type="submit" value="发表"/>
+    <input id="blog-preview" type="button" value="预览"/>
+    <input id="blog-nosubmit" type="button" value="不提交模式" data-meta="nosubmit-mode"/>  
+	</div>
+</form>
+<br/>
+<%- include footer %>
+<script src="/javascripts/controls.js"></script>
+<script>
+window.onload=function() {
+
+  var blogform=document.getElementById("blogform");
+  var txa=document.getElementById("txa");
+  var preSubmit="";
+  blogform.onsubmit=function(event){
+		var blog_content=document.getElementById("editblog-content").innerText;
+		txa.value=blog_content;
+		var alertMessage="";
+		if(txa.value==="") {
+		  alertMessage="提交内容为空\n";
+		}
+		if(document.getElementById("blog-title").value===""){
+		  alertMessage+="请输入文章标题\n";	
+		}
+		if(alertMessage!=="") {
+		  alert(alertMessage);
+		  event.preventDefault?event.preventDefault():event.returnValue = false;
+		  return ;
+		}
+		if(txa.value===preSubmit){
+		  event.preventDefault?event.preventDefault():event.returnValue = false;
+		  alert("请勿重复提交！");      
+		}
+		preSubmit=txa.value;		
+	};
+	txa.style.display="none";
+	var blogNoSub=document.getElementById("blog-nosubmit");
+	var blogSub=document.getElementById("blog-submit");
+	blogNoSub.onclick=function(){
+	  txa.style.display="inline-block";
+    //blogSub.disabled=true;
+		var blog_content=document.getElementById("editblog-content").innerText;
+		txa.value=blog_content;
+		var alertMessage="";
+		if(txa.value==="") {
+		  alertMessage="提交内容为空\n";
+		}
+		if(document.getElementById("blog-title").value===""){
+		  alertMessage+="请输入文章标题\n";	
+		}
+		if(alertMessage!=="") {
+		  alert(alertMessage);
+		}    
+	};
+};
+</script>
+</body>
+</html>   
