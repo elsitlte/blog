@@ -37,14 +37,16 @@
         <a title="登出" href="/logout"><i class="fa fa-sign-out fa-1x" aria-hidden="true">|</i>退出
         </a>
       </span>
+
       <div class="dropDownWrapper right">
         <span class="span-head">
           <a  id="dropDownAnchor" href="/u/<%= user.name %>/">
             <img title="<%= user.name %>" src="/images/29777498.png" alt="<%= user.name %>" width="24" height="24" title="头像">
             <i class="fa fa-caret-down fa-1x"></i>
           </a>
+
         </span>
-        <ul id="dropDown" class="dropDown">
+        <ul id="dropDown" class="dropDown hidden-sm-md-lg">
           <li>
             <a title="<%= user.name %>" href="/u/<%= user.name %>/">
               <i class="fa fa-feed fa-1x" aria-hidden="true"></i>我的博客
@@ -67,7 +69,7 @@
           </li>
         </ul>
       </div>
-      <em class="right">welcome <%= user.name %></em> 
+      <em class="hidden-xs-sm right">welcome <%= user.name %></em> 
       <% } else { %>
       <span class="span-login right"> 
         <a title="登录" href="/login"><i class="fa fa-sign-in" aria-hidden="true">|</i>登录</a>
@@ -78,8 +80,8 @@
       <% } %>
       <form action="/search" method="GET" class="search left">
         <input id="search" type="text" name="keyword" placeholder="Search" /><!--
-     --><a id="search-anchor" href="#"><i class="fa fa-search search-icon"></i></a>
-        <i class="fa fa-search fa-1x search-iconm"></i>
+     --><a class="search-anchor hidden-xs" href="#"><i class="fa fa-search search-icon"></i></a>
+        <i class="fa fa-search fa-1x search-iconm hidden-sm-md-lg"></i>
       </form> 
     </div>
   </nav>

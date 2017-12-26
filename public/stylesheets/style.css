@@ -120,7 +120,7 @@ header {
 	.hidden-xs,
 	.hidden-xs-sm,
 	.hidden-xs-sm-md {
-		display: none;
+		display: none !important;
 	}	
 }
 @media (min-width: 768px) and (max-width: 991px) {
@@ -129,7 +129,7 @@ header {
 	.hidden-xs-sm-md,
 	.hidden-sm-md,
 	.hidden-sm-md-lg {
-		display: none;
+		display: none !important;
 	}	
 }
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -138,7 +138,7 @@ header {
 	.hidden-sm-md,
 	.hidden-xs-sm-md,
 	.hidden-sm-md-lg {
-		display: none;
+		display: none !important;
 	}	
 }
 
@@ -146,7 +146,7 @@ header {
 	.hidden-lg,
 	.hidden-md-lg,
 	.hidden-sm-md-lg {
-		display: none;
+		display: none !important;
 	}	
 }
 /*nav 相关*/
@@ -176,16 +176,14 @@ nav em {
 	display:inline-block;
 	font-size: 1em;
 	color:#111;
-	padding: 1em 0.35em;
-	//line-height: normal;
-}
+	padding: 0.6em 0.35em;}
 
 nav span {
 	display:inline-block;
 	text-decoration:none;
 	font-size: 1.25em;
 	color:#111;
-	padding: 0.7em 0.25em;
+	padding: 0.5em 0.25em;
 }
 
 nav span:hover {
@@ -198,10 +196,10 @@ nav form {
 	display: block;
 	position: absolute;
 	right: 245px;
-	padding: 0.7em 0.30em;
+	padding: 0.5em 0.30em;
 	font-size: 1.25em;
-	line-height: 32px;
-	height: 32px;
+	line-height: 31.818px;
+	height: 31.818px;
 }
 nav img {
 	vertical-align:bottom;
@@ -210,39 +208,9 @@ nav img {
 span i {
 	padding: 0px 2px 0 2px;
 }
-span a {
-	color: #222;
+nav a {
+	color: #333;
 	text-decoration:none;
-}
-.dropDownWrapper {
-	position: relative;
-	display: inline-block;
-}
-.dropDownWrapper:hover .dropDown {
-	display: block;
-}
-ul.dropDown {
-	display: none;
-	position: absolute;
-	top: 45px;
-	left: -70px;
-	min-width:95px;
-	padding: 12px;
-	background-color: #ddd;
-	border: 1px solid #666;
-	border-radius: 7px;
-  box-shadow: 4px 4px 4px rgba(0,0,0,0.2);
-}
-ul.dropDown li {
-	text-decoration: none;
-	display: block;
-	padding: 3px;
-	border-bottom: 1px solid #999;
-}
-ul.dropDown a {
-	text-decoration: none;
-	color: #222;
-	font-size: 1.25em
 }
 #search {
   width: 120px;
@@ -255,7 +223,7 @@ ul.dropDown a {
   padding: 2px 5px 2px 14px;
   margin: 0;
   line-height: 20px;
-  vertical-align: bottom;
+  vertical-align: middle;
 }
 #search:focus,
 #search:hover {
@@ -263,13 +231,14 @@ ul.dropDown a {
   -webkit-transition: width 0.3s;
   outline:0;
 }
-#search-anchor {
+.search-anchor {
 	height: 24px;
   display: inline-block;
   background: #f0ad4e;
   border-radius: 0 2px 2px 0;
   line-height: 24px;
-  vertical-align: bottom;
+  vertical-align: middle;
+  cursor: pointer;
 }
 .search-icon {
 	height: 100%;
@@ -278,17 +247,7 @@ ul.dropDown a {
   padding: 0px 5px;
   font-size: 1.25em;
 }
-.search-iconm {
-	display: none;
-	line-height: 32px;
-}
-@media (min-width: 768px) and (max-width: 991px) ,
-print and (min-width: 768px) and (max-width：991px) {
-	nav em {
-		display: none;
-	}
 
-}
 
 @media screen and (max-width: 767px),
 print and (max-width: 767px) {
@@ -301,28 +260,24 @@ print and (max-width: 767px) {
 		padding: 0.6em 0 0.6em 1.4em;
 		font-size: 1em;
 		vertical-align: middle;
-		width: 28.5%; /*96px/320px*/
+		width: 29%; /*96px/320px*/
 	}
 	form.search,
 	.span-logo {
     position: relative;
     left: -10px;
 	}
+	.search-iconm {
+		line-height: 32px;
+		display: inline-block;
+	}
 	#search {
-	  width:auto;		
 		display: none;
 		border-radius: 12px;
-	}
-	#search-anchor {
-	  cursor: pointer;
-	  display: none;
-	}
-	.search-iconm {
-		display: inline-block;
+		width: 100%; 
 	}
 	form:hover #search {
 		display: inline-block;
-		width: 100%; /*110px/320px*/
 	}
 	form:hover .search-iconm {		
 		display: none;
@@ -333,9 +288,31 @@ print and (max-width: 767px) {
 	  -webkit-transition: width 0.3s;
 	  outline:0;
 	}
-
-	nav em {
+	.dropDownWrapper:hover .dropDown {
+		display: block;
+	}
+	ul.dropDown {
 		display: none;
+		position: absolute;
+		top: 45px;
+		right: 5px;
+		min-width:95px;
+		padding: 12px;
+		background-color: #ddd;
+		border: 1px solid #666;
+		border-radius: 7px;
+	  box-shadow: 4px 4px 4px rgba(0,0,0,0.2);
+	}
+	ul.dropDown li {
+		text-decoration: none;
+		display: block;
+		padding: 3px;
+		border-bottom: 1px solid #999;
+	}
+	ul.dropDown a {
+		text-decoration: none;
+		color: #222;
+		font-size: 1.25em
 	}
 
 }
@@ -344,7 +321,7 @@ print and (max-width: 767px) {
 article {
   width:70.278%; /*960/1366*/
   min-height: 400px;
-	font-size:16px;
+	font-size:14px;
 	padding-top:.5em;
 	margin: 5em auto 1em;
 }
@@ -396,6 +373,9 @@ print and (max-width:767px) {
 		min-width: 100px;
 	} 
 }
+div.article-text ul {
+  padding-left: 30px;
+}
 div.abstract table,
 div.article-text table {
 	border-collapse: collapse;
@@ -426,13 +406,73 @@ div.article-aside {
 	padding: 2px;
   position: fixed;
   right: 15%;
-  top: 200px;
+  top: 150px;
+}
+div.go-top-cover {
+	width: 45px;
+	height: 45px;
+	border: 1px solid #333;
+	position:fixed;
+  right: 15%;
+  top: 80%;
+  z-index: 100;
+  line-height: 45px;
+  background-color: #67a453;
+}
+div.go-top {
+	width: 100%;
+	height:100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  text-align: center;
+}
+div.go-top i{
+	color: #fff ;
+  font-size: 1.5em;
+  padding: 0.2em;
+}
+@media screen and (max-width:767px),
+print and (max-width:767px) {
+	div.go-top-cover {
+		width: 34px;
+		height:34px;
+		border-radius: 100%;
+		background-color:#E02222;
+		opacity: 0.75;
+		position:fixed;
+    right: 10%;
+    top: 80%;
+    line-height: 34px;
+	}
 }
 @media screen and (max-width:991px),
 print and (max-width:991px) {
 	div.article-aside {
     display: none;
 	}
+}
+
+div.content-header {
+	font-size: 16px;
+	font-weight: bold;
+  padding: 0 5px;
+}
+div.content-body {
+  position: relative;
+}
+div.content-highlight {
+	width: 100%;
+	display: none;
+	background-color: #C7EAE8;
+  border-left: 3px solid #FC8400 ;
+  height: 1.5em;
+  position: absolute;
+  z-index: -10;
+}
+ul.content-list {
+	list-style: none;
+	padding-left: 20px;
 }
 div.article-content {
 	width: 100%;
@@ -488,7 +528,7 @@ div.abstract-list {
     margin: 1em 0px 3em 0px;
 }
 div.abstract {
-	max-height:170px;
+	max-height:175px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	word-wrap: break-word;

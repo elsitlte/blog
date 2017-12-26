@@ -1,14 +1,20 @@
 <%- include header %>
 <div class="article-aside">
   <div class="article-content">
-    <h4>目录</h4>
+    <div class="content-header">目录</div>
     <div class="content-body">
+      <div class="content-highlight">
+      </div>
+      <ul class="content-list">        
+      </ul>
     </div>
-  xxxxxxx
-  xxxxxxx
-  xxxxxxx
-  xxxxxxx
-  xxxxxxx
+  </div>
+</div>
+<div class="go-top-cover">
+  <div class="go-top">
+    <a href="#">
+      <i class="fa fa-chevron-up" aria-hidden="true"></i>
+    </a>    
   </div>
 </div>
 <div class="article-text">
@@ -28,7 +34,9 @@
        </a>
     <% } %>
   </div>
+  <div class="article-main">
   <%- post.post %>
+  </div>
   <p class="info">阅读：<%= post.pv %> | 评论：<%= post.comments.length %> | 
     转载：
     <% if (post.repost_info.repost_to) { %>
@@ -67,6 +75,5 @@
 </div>
 <%- include footer %>
 <script src="/javascripts/controls.js"></script>
-<script></script>
 </body>
 </html>
